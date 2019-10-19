@@ -1,7 +1,3 @@
-# Laravel_playground
-
-## Cheat sheet
-
 ### Inside route definition file (routes/web.php)
 
 Defining a route using closure
