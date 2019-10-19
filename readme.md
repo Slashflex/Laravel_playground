@@ -4,5 +4,5 @@
 
 ### Laravel basics(routes, controllers, views, forms, testing)
 
-1. [Routes, views and Layout](https://github.com/Slashflex/Laravel_playground/blob/master/01-routes-views.md)
-2. [Controllers](https://github.com/Slashflex/Laravel_playground/blob/master/02-controllers.md)
+1. [Routes, views and Layout](https://github.com/Slashflex/Laravel_playground/blob/master/Laravel-cheat-sheet/01-routes-views.md)
+2. [Controllers](https://github.com/Slashflex/Laravel_playground/blob/master/Laravel-cheat-sheet/02-controllers.md)
