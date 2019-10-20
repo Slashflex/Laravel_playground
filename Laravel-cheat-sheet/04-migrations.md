@@ -14,6 +14,7 @@ Migrating: 2014_10_12_000000_create_users_table
 Illuminate\Database\QueryException  : SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))
 ```
 Change the email field length to 191.
+___
 
 ### Running migrations
 
@@ -29,6 +30,7 @@ Setting the length of the field
 ```php
 $table->sting('email', 191);
 ```
+___
 
 ### Writing migrations
 
@@ -44,6 +46,7 @@ To prefill the migration with stub code that modifies an existing table
 ```shell
 php artisan make:migration add_date_to_blogposts_table --table=blogposts
 ```
+___
 
 ### The migration file
 
