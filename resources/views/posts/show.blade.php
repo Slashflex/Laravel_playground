@@ -7,8 +7,8 @@
     <p>Added {{ $post->created_at->diffForHumans() }}</p>
 
     <!-- For New posts -->
-    @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
+    {{-- @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
         <strong>New!</strong>
 
-    @endif
+    @endif --}}
 @endsection
