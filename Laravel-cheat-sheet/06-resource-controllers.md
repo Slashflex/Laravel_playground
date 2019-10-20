@@ -2,7 +2,7 @@
 
 Import the Model class for easier usage
 ```php
-use App\BlogPost
+use App\BlogPost;
 // Now it can be used like this
 BlogPost::all();
 // Instead of 
@@ -85,7 +85,7 @@ Route::resource('posts', 'PostController')->only(['index', 'show']);
 ```
 To disable specific routes
 ```php
-Route::resource('posts', 'PostController')->except(['create', 'store', 'edit', 'update', 'destroy]);
+Route::resource('posts', 'PostController')->except(['create', 'store', 'edit', 'update', 'destroy']);
 ```
 *Both examples above will result in the same routes -* ```posts.index``` *and* ```posts.show```
 
@@ -93,7 +93,7 @@ Route::resource('posts', 'PostController')->except(['create', 'store', 'edit', '
 
 Model can be fetched using ```BlogPost::find($id)```
 
-To display a 404 Not Found page when model cannot be found, use ```BlogPost::findOrFail($id```
+To display a 404 Not Found page when model cannot be found, use ```BlogPost::findOrFail($id)```
 
 **Route Model Binding**
 
