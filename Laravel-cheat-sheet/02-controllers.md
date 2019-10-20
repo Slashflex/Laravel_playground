@@ -35,6 +35,7 @@ Route::get('/contact', 'HomeController@contact');
 We don't have to specify the full controller namespace in ```web.php```. It's enough to specify everything after ```App\Http\Controllers```.
 
 RouteServiceProvider is responsible for prepending the ```App\Http\Controllers``` namespace to controller names in routes.
+___
 
 ### Single Action Controllers
 
@@ -67,6 +68,7 @@ The ```_invoke``` is a magic PHP method that allows the Object to be called like
 $controller = new HomeSingleController();
 $controller();
 ```
+___
 
 ### Routing
 
