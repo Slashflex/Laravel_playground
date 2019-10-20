@@ -10,7 +10,7 @@ Reading environment variable
 $value = env('DB_HOST', '127.0.0.1');
 ```
 *Where first value is the name of the variable, and second is the default value (if env variable is not defined).*
-
+___
 
 ### Connecting to the database server
 
