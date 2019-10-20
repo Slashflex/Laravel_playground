@@ -6,7 +6,7 @@
             <!-- For New posts -->
             @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
                 <h3>
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a><strong> New!</strong>
+                    <strong class="newPost">New! </strong><a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                 </h3>    
             @else 
                 <h3>
