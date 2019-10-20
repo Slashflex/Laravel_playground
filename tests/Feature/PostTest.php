@@ -133,16 +133,3 @@ class PostTest extends TestCase
         return $post;
     }
 }
-// $paramsEmpty = [
-//     'title' => '',
-//     'content' => ''
-// ];
-
-// $this->post('/posts', $paramsEmpty)
-// ->assertStatus(302)
-// ->assertSessionHas('errors');
-
-// $messages = session('errors')->getMessages();
-
-// $this->assertEquals($messages['title'][0], 'The title field is required.');
-// $this->assertEquals($messages['content'][0], 'The content field is required.');
