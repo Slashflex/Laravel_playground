@@ -35,6 +35,7 @@ $url = route('home');
 $blogPostUrl = route('blog-post', ['id' => 1]);
 // Generates /blog-post/1
 ```
+___
 
 ### Inside Blade template
 
