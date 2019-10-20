@@ -14,4 +14,4 @@
 
 
 ### Additional informations
-![Laravel Documentation](https://laravel.com/docs/6.x)
+[Laravel Documentation](https://laravel.com/docs/6.x)
