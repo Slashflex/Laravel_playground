@@ -11,3 +11,7 @@
 5. [Eloquent Models](https://github.com/Slashflex/Laravel_playground/blob/master/Laravel-cheat-sheet/05-eloquent-models.md)
 6. [Resource Controllers](https://github.com/Slashflex/Laravel_playground/blob/master/Laravel-cheat-sheet/06-resource-controllers.md)
 7. [Unit & Feature tests](https://github.com/Slashflex/Laravel_playground/blob/master/Laravel-cheat-sheet/07-testing.md)
+
+
+### Additional informations
+![Laravel Documentation](https://laravel.com/docs/6.x)
