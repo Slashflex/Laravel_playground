@@ -35,7 +35,12 @@ class PostController extends Controller
 
         // dd(DB::getQueryLog());
 
-        return view('posts.index', ['posts' => BlogPost::all()]);
+
+        // comments_count
+        return view(
+            'posts.index',
+            ['posts' => BlogPost::withCount('comments')->get()]
+        );
     }
 
     /**
@@ -46,7 +51,9 @@ class PostController extends Controller
      */
     public function show(Request $request, $id)
     {
-        return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
+        return view('posts.show', [
+            'post' => BlogPost::with('comments')->findOrFail($id)
+        ]);
     }
 
     public function create()
