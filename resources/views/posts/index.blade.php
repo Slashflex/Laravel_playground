@@ -7,11 +7,17 @@
             @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
                 <h3>
                     <strong class="newPost">New! </strong><a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
-                </h3>    
+                </h3>
+
+                <!-- comments_count helper -->
+                @include('posts._comments_count')
             @else 
                 <h3>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                 </h3>
+
+                <!-- comments_count helper -->
+                @include('posts._comments_count')
             @endif
 
             <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
