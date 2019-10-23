@@ -15,7 +15,12 @@ class AddTitleContentToBlogpostsTable extends Migration
     {
         Schema::table('blogposts', function (Blueprint $table) {
             $table->string('title')->default('');
-            $table->text('content')->default('');
+            
+            if (env('DB_CONNECTION') === 'sqlite_testing') {
+                $table->string('content')->default('');                
+            } else {
+                $table->text('content');
+            }
         });
     }
 
