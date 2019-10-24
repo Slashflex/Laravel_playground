@@ -6,6 +6,7 @@ use App\BlogPost;
 
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StorePost;
 
 class PostController extends Controller
@@ -78,12 +79,22 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = BlogPost::findOrFail($id);
+        
+        if (Gate::denies('update-post', $post)) {
+            abort(403, 'You can\'t edit this blog post');
+        }
+        
         return view('posts.edit', ['post' => $post]);
     }
 
     public function update(StorePost $request, $id)
     {
         $post = BlogPost::findOrFail($id);
+        
+        if (Gate::denies('update-post', $post)) {
+            abort(403, 'You can\'t edit this blog post');
+        }
+        
         $validatedDate = $request->validated();
 
         $post->fill($validatedDate);
