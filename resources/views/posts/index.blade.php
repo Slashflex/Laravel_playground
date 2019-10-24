@@ -9,6 +9,11 @@
                     <strong class="newPost">New! </strong><a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                 </h3>
 
+                <p class="text-muted">
+                    Added {{ $post->created_at->diffForHumans() }}
+                    by {{ $post->user->name }}
+                </p>
+
                 <!-- comments_count helper -->
                 @include('posts._comments_count')
             @else 
@@ -16,6 +21,10 @@
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                 </h3>
 
+                <p class="text-muted">
+                    Added {{ $post->created_at->diffForHumans() }}
+                    by {{ $post->user->name }}
+                </p>
                 <!-- comments_count helper -->
                 @include('posts._comments_count')
             @endif
