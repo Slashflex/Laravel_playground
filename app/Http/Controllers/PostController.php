@@ -80,9 +80,11 @@ class PostController extends Controller
     {
         $post = BlogPost::findOrFail($id);
         
-        if (Gate::denies('update-post', $post)) {
-            abort(403, 'You can\'t edit this blog post');
-        }
+        $this->authorize('update-post', $post);
+
+        // if (Gate::denies('update-post', $post)) {
+        //     abort(403, 'You can\'t edit this blog post');
+        // }
         
         return view('posts.edit', ['post' => $post]);
     }
@@ -91,9 +93,11 @@ class PostController extends Controller
     {
         $post = BlogPost::findOrFail($id);
         
-        if (Gate::denies('update-post', $post)) {
-            abort(403, 'You can\'t edit this blog post');
-        }
+        $this->authorize('update-post', $post);
+
+        // if (Gate::denies('update-post', $post)) {
+        //     abort(403, 'You can\'t edit this blog post');
+        // }
         
         $validatedDate = $request->validated();
 
@@ -107,6 +111,13 @@ class PostController extends Controller
     public function destroy(Request $request, $id)
     {
         $post = BlogPost::findOrFail($id);
+        
+        $this->authorize('delete-post', $post);
+
+        // if (Gate::denies('delet-post', $post)) {
+        //     abort(403, 'You can\'t delete this blog post');
+        // }
+        
         $post->delete();
 
         // BlogPost::destroy($id);
