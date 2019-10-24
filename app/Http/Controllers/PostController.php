@@ -80,6 +80,7 @@ class PostController extends Controller
     public function store(StorePost $request)
     {
         $validatedDate = $request->validated();
+        $validatedDate['user_id'] = $request->user()->id;
         $blogPost = BlogPost::create($validatedDate);
         $request->session()->flash('status', 'Blog post was created!');
 

@@ -12,7 +12,7 @@ class BlogPost extends Model
     use SoftDeletes;
 
     // Mass Assignement
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'user_id'];
 
     public function comments()
     {
