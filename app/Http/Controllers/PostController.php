@@ -54,7 +54,7 @@ class PostController extends Controller
         // comments_count
         return view(
             'posts.index',
-            ['posts' => BlogPost::withCount('comments')->get()]
+            ['posts' => BlogPost::latest()->withCount('comments')->get()]
         );
     }
 
@@ -64,8 +64,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show($id)
     {
+        // Sorts comments by date
+        // return view('posts.show', [
+        //     'post' => BlogPost::with(['comments' => function ($query) {
+        //         return $query->latest();
+        //     }])->findOrFail($id)
+        // ]);
         return view('posts.show', [
             'post' => BlogPost::with('comments')->findOrFail($id)
         ]);
