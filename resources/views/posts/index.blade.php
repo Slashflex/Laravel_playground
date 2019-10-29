@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+<div class="row">
+    <div class="col-8">
     @forelse($posts as $post)
         <p>
             <!-- For New posts -->
@@ -52,4 +54,23 @@
     @empty
         <p>No blog post yet!</p>
     @endforelse
+    </div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Most Commented</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    What people are currently talking about
+                </h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach ($mostCommented as $post)
+                    <a href="{{ route('posts.show', ['post' => $post->id]) }}">
+                        <li class="list-group-item">{{ $post->title }}</li> 
+                    </a>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</div>
 @endsection

@@ -26,9 +26,16 @@ class BlogPost extends Model
         return $this->belongsTo('App\User');
     }
 
+    // Local Scope
     public function scopeLatest(Builder $query)
     {
         return $query->orderBy(static::CREATED_AT, 'desc');
+    }
+
+    public function scopeMostCommented(Builder $query)
+    {
+        // comments_count
+        return $query->withCount('comments')->orderBy('comments_count', 'desc');
     }
 
     public static function boot()
