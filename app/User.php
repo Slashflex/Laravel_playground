@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -30,9 +31,13 @@ class User extends Authenticatable
 
     public function blogPosts()
     {
-        $this->hasMany('App\blogPost');
+        return $this->hasMany('App\blogPost');
     }
 
+    public function scopeWithMostBlogPosts(Builder $query)
+    {
+        return $query->withCount('blogPosts')->orderBy('blog_posts_count', 'desc');
+    }
     /**
      * The attributes that should be cast to native types.
      *

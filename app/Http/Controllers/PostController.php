@@ -8,6 +8,7 @@ use App\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StorePost;
+use App\User;
 
 
 // [
@@ -56,7 +57,8 @@ class PostController extends Controller
             'posts.index',
             [
                 'posts' => BlogPost::latest()->withCount('comments')->get(),
-                'mostCommented' => BlogPost::mostCommented()->take(5)->get()
+                'mostCommented' => BlogPost::mostCommented()->take(5)->get(),
+                'mostActive' => User::withMostBlogPosts()->take(5)->get()
             ]
         );
     }
