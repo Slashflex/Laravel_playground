@@ -8,7 +8,14 @@
             <!-- For New posts -->
             @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
                 <h3>
-                    <strong class="newPost">New! </strong><a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    @if ($post->trashed())
+                        <del>
+                    @endif
+                    <strong class="newPost">New! </strong>
+                    <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    @if ($post->trashed())
+                        </del>
+                    @endif
                 </h3>
 
                 <p class="text-muted">
@@ -20,7 +27,13 @@
                 @include('posts._comments_count')
             @else 
                 <h3>
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    @if ($post->trashed())
+                        <del>
+                    @endif
+                        <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    @if ($post->trashed())
+                        </del>
+                    @endif
                 </h3>
 
                 <p class="text-muted">
@@ -42,14 +55,16 @@
                 <p>You can't delete this post</p>
             @endcannot --}}
 
-            @can('delete', $post)
-                <form method="POST"  class="fm-inline"
-                    action="{{ route('posts.destroy', ['post' => $post->id]) }}">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Delete !" class="btn btn-primary">
-                </form>
-            @endcan
+            @if (!$post->trashed())
+                @can('delete', $post)
+                    <form method="POST"  class="fm-inline"
+                        action="{{ route('posts.destroy', ['post' => $post->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete !" class="btn btn-primary">
+                    </form>
+                @endcan
+            @endif
         </p>
     @empty
         <p>No blog post yet!</p>
