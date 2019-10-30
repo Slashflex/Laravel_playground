@@ -15,6 +15,8 @@
     @updated(['date' => $post->updated_at]) 
         Updated
     @endupdated
+
+    <p>Currently read by {{ $counter}} people</p>
     
     <h4>Comments</h4>
 
