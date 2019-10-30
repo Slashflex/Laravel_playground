@@ -12,9 +12,9 @@
                         <del>
                     @endif
 
-                    @component('badge', ['type' => 'primary'])
+                    @badge
                         New !
-                    @endcomponent
+                    @endbadge
 
                     <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                     
@@ -35,7 +35,9 @@
                     @if ($post->trashed())
                         <del>
                     @endif
-                        <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+
+                    <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    
                     @if ($post->trashed())
                         </del>
                     @endif
