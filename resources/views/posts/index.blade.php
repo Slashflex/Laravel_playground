@@ -22,10 +22,8 @@
                 @endif
             </h3>
 
-            <p class="text-muted">
-                Added {{ $post->created_at->diffForHumans() }}
-                by {{ $post->user->name }}
-            </p>
+            @updated(['date' => $post->created_at, 'name' => $post->user->name]) 
+            @endupdated
 
             <!-- comments_count helper -->
             @include('posts._comments_count')
