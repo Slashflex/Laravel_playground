@@ -6,13 +6,18 @@
     @forelse($posts as $post)
         <p>
             <!-- For New posts -->
-            @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 5)
+            @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 20)
                 <h3>
                     @if ($post->trashed())
                         <del>
                     @endif
-                    <strong class="newPost">New! </strong>
+
+                    @component('badge', ['type' => 'primary'])
+                        New !
+                    @endcomponent
+
                     <a class="{{ $post->trashed() ? 'text-muted' : '' }}" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                    
                     @if ($post->trashed())
                         </del>
                     @endif
