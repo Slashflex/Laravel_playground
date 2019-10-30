@@ -24,7 +24,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')
-            ->only(['create', 'store', 'edit', 'update', 'destroy']);
+             ->only(['create', 'store', 'edit', 'update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -58,7 +58,8 @@ class PostController extends Controller
             [
                 'posts' => BlogPost::latest()->withCount('comments')->get(),
                 'mostCommented' => BlogPost::mostCommented()->take(5)->get(),
-                'mostActive' => User::withMostBlogPosts()->take(5)->get()
+                'mostActive' => User::withMostBlogPosts()->take(5)->get(),
+                'mostActiveLastMonth' => User::withMostBlogPostsLastMonth()->take(5)->get(),
             ]
         );
     }
