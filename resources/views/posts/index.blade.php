@@ -25,6 +25,8 @@
             @updated(['date' => $post->created_at, 'name' => $post->user->name]) 
             @endupdated
 
+            @tags(['tags' => $post->tags])@endtags
+
             <!-- comments_count helper -->
             @include('posts._comments_count')
 
